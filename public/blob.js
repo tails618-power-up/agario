@@ -23,16 +23,14 @@ function Blob(x, y, r, color){
         mousepos = createVector(mouseX, mouseY);
         //center of screen vector
         centerpos = createVector(width/2, height/2);
-        velocity = mousepos.sub(centerpos);
+        let velocity = mousepos.sub(centerpos);
         velocity.setMag(6);
         this.pos.add(velocity);
     }
 
     this.constrain = function(minx, maxx, miny, maxy){
         this.pos.x = constrain(this.pos.x, minx + this.r, maxx - this.r);
-        this.pos.x = constrain(this.pos.y, miny + this.r, maxy - this.r);
-        //this.pos.x = constrain(this.pos.x, minx, maxx);
-        //this.pos.x = constrain(this.pos.y, miny, maxy);
+        this.pos.y = constrain(this.pos.y, miny + this.r, maxy - this.r);
     }
 
     this.can_eat = function(otherblob) {
