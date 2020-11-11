@@ -10,12 +10,24 @@ function setup(){
 
     
     socket = io.connect('http://localhost:3000');
+    socket.on("foods", (foods) => {
+        console.log(foods);
+        /*fill(255,0,0);
+        ellipse(data.x, data.y, 20,20);*/
+        for (let i = 0; i < foods.length; i++){
+            food = new Blob(foods[i][0], foods[i][1], 10, "random")
+            food.show();
+            /*if(player.can_eat(foods[i])){
+                foods.splice(i,1);
+            }*/
+        }
+    })
 }
 
 function draw(){
-    background(255);
+    //background(255);
     fill(220);
-    rect(-4*width, -4*height, 8*width, 8*height);
+    //rect(-4*width, -4*height, 8*width, 8*height);
 
     translate(width/2, height/2);
     let newzoom = 30/player.r;

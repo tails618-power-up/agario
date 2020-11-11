@@ -1,4 +1,5 @@
 function Blob(x, y, r, color){
+    //We need to add an ID
     //properties
     this.pos = createVector(x,y);
     this.r = r;
