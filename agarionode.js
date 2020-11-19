@@ -27,10 +27,10 @@ io.sockets.on('connection', (socket) => {
     console.log("New client connection" + socket.id);
     io.sockets.emit("foods", foods);
 
-    socket.on("clientdraw", (data) => {
+    socket.on("playerposition", (data) => {
         console.log(data);
         // all other sockets
-        socket.broadcast.emit("serverdraw", data);
+        socket.broadcast.emit("playerposition", data);
 
         //all sockets including the one that sent the data
         //io.sockets.emit("serverdraw", data);")
