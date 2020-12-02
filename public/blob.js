@@ -1,18 +1,18 @@
-function Blob(x, y, r, color){
-    //We need to add an ID
+function Blob(x, y, r, color, id){
     //properties
     this.pos = createVector(x,y);
     this.r = r;
     this.color = color;
+    this.id = id;
     //handle the random color
-    const colorlist = ['#ff0000','#00ff00','#0000ff']
+    const colorlist = ['#ff0000','#00ff00','#0000ff'];
 
     if (color == "random"){
         let rand = Math.floor(random(colorlist.length));
         this.color = colorlist[rand];
     }
 
-    console.log("Created new blob with radius " + this.r.toString());
+    console.log("Created new blob with color " + this.color);
 
     this.show = function(){
         fill(this.color);

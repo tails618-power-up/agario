@@ -18,7 +18,7 @@ function setup(){
         /*fill(255,0,0);
         ellipse(data.x, data.y, 20,20);*/
         for(let foodItem in foods){
-            food = new Blob(foods[foodItem][0], foods[foodItem][1], 10, "random")
+            food = new Blob(foods[foodItem][0], foods[foodItem][1], 10, foods[foodItem][2], foods[foodItem][3]);
             foodList.push(food);
             console.log(food);
             /*if(player.can_eat(foods[i])){
@@ -55,6 +55,10 @@ function draw(){
     for (let i = 0; i < foodList.length; i++){
         foodList[i].show();
         if(player.can_eat(foodList[i])){
+            let data = {
+                id: foodList[i].id
+            }
+            socket.emit("removeBlob", data);
             foodList.splice(i,1);
         }
     }
